@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//http module 
+var http = require('http');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -13,6 +16,10 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//server enviroments
+
+app.set('port',7000);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -31,8 +38,6 @@ app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-    
-consonle.log("hello node");
 });
 
 // error handlers
@@ -59,5 +64,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+http.createServer(app).listen(app.get('port'), function(){
+    console.log('server Running....' +app.get('port'));
+});
 
 module.exports = app;
