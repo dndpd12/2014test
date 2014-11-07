@@ -10,12 +10,14 @@ var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var tests = require('./routes/test');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 //server enviroments
 
@@ -29,8 +31,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// url 에 들어오면 해당 js 파일을 수행한다.
 app.use('/', routes);
 app.use('/users', users);
+app.use('/test',tests)
 
 
 // catch 404 and forward to error handler
