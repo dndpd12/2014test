@@ -23,3 +23,4 @@ exports.conn = connection;
 
 // 해당 eonnection을 exports.conn으로 반납?
 // var conn = require('./dbcon') 을 통해 conn.connection으로 사용할 수 있음.
+//moduel.exports = connection;

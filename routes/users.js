@@ -10,12 +10,46 @@ router.get('/', function(req, res) {
 
 router.get('/', function(req,res){
 
+
     var query = dbcon.conn.query('select * from SDTIMETABLE',function(err,rows){
         console.log(rows);
-        res.json(rows);
+        //res.json(rows);
     });
     console.log(query);
+
+	res.render('./users');
+});
+
+
+
+
+router.post('/', function(req,res){
+	console.log('in');
+	var  user = {'userid':req.body.userid,
+				'name':req.body.name,
+				'address':req.body.address
+	};
+
+
+    var query = dbcon.conn.query('insert into user set ?',function(err,result){
+        // console.log(rows);
+        //res.json(rows);
+        if(err){
+        	console.error(err);
+        	throw err;
+        }
+    	console.log(query);
+    	res.send(200,'success');
+    });
+
+	// res.render('./users');
 });
 
 module.exports = router;
 
+
+
+   // var query = dbcon.conn.query('select * from SDTIMETABLE',function(err,rows){
+   //      console.log(rows);
+   //      //res.json(rows);
+   //  });
