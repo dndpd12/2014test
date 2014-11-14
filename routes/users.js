@@ -1,27 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var dbcon = require('./dbcon');
+var app = require('./app');
 /* GET users listing. */
 /*
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+  res.send('respond with a resource');  
 });
 */
 
-router.get('/', function(req,res){
+router.get('/', function(res){
 
-
-    var query = dbcon.conn.query('select * from SDTIMETABLE',function(err,rows){
+console.log('aaaaa');
+    var query = dbcon.conn.query('select * from users',function(err,rows){
         console.log(rows);
         //res.json(rows);
     });
     console.log(query);
-
-	res.render('./users');
 });
-
-
-
 
 router.post('/', function(req,res){
 	console.log('in');

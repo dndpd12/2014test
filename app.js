@@ -8,9 +8,7 @@ var bodyParser = require('body-parser');
 //http module 
 var http = require('http');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var tests = require('./routes/test');
+var routes = require('./routes');
 
 var app = express();
 
@@ -33,9 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // url 에 들어오면 해당 js 파일을 수행한다.
-app.use('/', routes);
-app.use('/users', users);
-app.use('/test',tests)
+app.get('/', routes.index);
+app.get('/users', routes.users);
 
 
 // catch 404 and forward to error handler

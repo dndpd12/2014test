@@ -1,3 +1,23 @@
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(document).ready(function(){
+  jQuery.ajax({
+    type:"GET",
+    url:"/users",
+    dataType:"JSON",
+    success:function(msg){
+    alert(msg);
+  },
+    error:function(xhr,status,error){
+      alert("error!!");
+    }
+  });
+});
+
+</script>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +95,7 @@
       </div>
               </form>
         <button type="submit" class="btn btn-default btn-lg">
+          <input type="button" onclick="login()" value="조회" />
           <span class="glyphicon glyphicon-star"></span> Star
         </button>
       </div>
